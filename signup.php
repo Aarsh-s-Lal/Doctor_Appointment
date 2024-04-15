@@ -1,8 +1,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "localhost";
-    $username = "admin";
-    $password = "aarsh@123";
+    $servername = "16.16.68.145";
+    $username = "aarsh";
+    $password = "aarsh123";
     $database = "cca";
 
     $conn = new mysqli($servername, $username, $password, $database);
