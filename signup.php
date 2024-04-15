@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "16.16.68.145";
-    $username = "aarsh";
+    $username = "admin";
     $password = "aarsh123";
     $database = "cca";
 
