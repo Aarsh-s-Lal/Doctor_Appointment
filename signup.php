@@ -1,8 +1,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "admin";
+    $password = "aarsh@123";
     $database = "cca";
 
     $conn = new mysqli($servername, $username, $password, $database);
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssss", $email, $password, $name, $profession); 
 
         if ($stmt->execute()) {
-            header("Location: home.html");
+            header("Location: services.html");
             exit();
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
