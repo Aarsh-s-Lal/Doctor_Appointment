@@ -1,38 +1,42 @@
 <?php
+// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "172.31.20.125";
-    $username = "admin";
-    $password = "aarsh123";
-    $database = "cca";
+    // Retrieve form data
+    $email = $_POST['mail'];
+    $password = $_POST['pass'];
+    $name = $_POST['name'];
+    $profession = $_POST['profession'];
 
-    $conn = new mysqli($servername, $username, $password, $database);
+    // Database connection settings
+    $servername = "172.31.30.143";
+    $username = "admin"; // Replace with your database username
+    $password = "aarsh123"; // Replace with your database password
+    $dbname = "cca"; // Replace with your database name
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    try {
+        // Create database connection
+        $conn = new PDO("database2.c94wcsksm5ln.eu-north-1.rds.amazonaws.com", $username, $password);
+        // Set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        $email = $_POST['mail']; // Corrected to 'mail'
-        $password = $_POST['pass']; // Corrected to 'pass'
-        $name = $_POST['name'];
-        $profession = $_POST['profession'];
-
-        $sql = "INSERT INTO users (email, password, name, profession) VALUES (?, ?, ?, ?)";
-
-        $stmt = $conn->prepare($sql);
+        // Prepare SQL statement to insert data
+        $stmt = $conn->prepare("INSERT INTO users (email, password, name, profession) VALUES (:email, :password, :name, :profession)");
 
         // Bind parameters
-        $stmt->bind_param("ssss", $email, $password, $name, $profession); 
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':profession', $profession);
 
-        if ($stmt->execute()) {
-            header("Location: services.html");
-            exit();
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-        $stmt->close();
+        // Execute the query
+        $stmt->execute();
+
+        echo "New record created successfully";
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
-    $conn->close();
+
+    // Close the database connection
+    $conn = null;
 }
 ?>
