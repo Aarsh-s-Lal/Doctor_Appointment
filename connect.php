@@ -1,8 +1,10 @@
+<!-- connect.php -->
 <?php
-$host = 'mydb.c94wcsksm5ln.eu-north-1.rds.amazonaws.com';
-$username = 'admin';
-$password = 'aarsh123';
-$database = 'mydb';
+
+$host = "mydb.c94wcsksm5ln.eu-north-1.rds.amazonaws.com"; // RDS endpoint
+$username = "admin"; // Replace with your database username
+$password = "aarsh123"; // Replace with your database password
+$dbname = "mydb"; // Replace with your database name
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
