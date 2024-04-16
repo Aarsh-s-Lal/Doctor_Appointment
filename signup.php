@@ -23,7 +23,7 @@
       </div>
       <div class="form-group">
         <label for="profession">Profession</label>
-        <input type="Text" id="Text" name="text" required>
+        <input type="Text" id="profession" name="profession" required>
       </div>
       <div class="form-group">
         <button type="submit">Sign Up</button>
