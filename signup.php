@@ -12,11 +12,11 @@
     <form id="signupForm" action="login_process.php" method="post">
       <div class="form-group">
         <label for="email">E-mail</label>
-        <input type="text" id="mail" name="mail" required>
+        <input type="text" id="email" name="email" required>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="pass" name="pass" required>
+        <input type="password" id="password" name="password" required>
       </div>
       <div class="form-group">
         <label for="name">Name</label>
