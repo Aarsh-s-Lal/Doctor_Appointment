@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +9,7 @@
 <body>
   <div class="container">
     <h1>Sign Up</h1>
-    <form id="signupForm" action="connection.php" method="post">
+    <form id="signupForm" action="login_process.php" method="post">
       <div class="form-group">
         <label for="email">E-mail</label>
         <input type="text" id="mail" name="mail" required>
@@ -23,14 +24,13 @@
       </div>
       <div class="form-group">
         <label for="profession">Profession</label>
-        <input type="Text" id="profession" name="profession" required>
+        <input type="profession" id="profession" name="profession" required>
       </div>
       <div class="form-group">
-        <button type="submit">Sign Up</button>
+        <button type="submit" name="login">Sign Up</button>
       </div>
     </form>
     
   </div>
 </body>
 </html>
-
