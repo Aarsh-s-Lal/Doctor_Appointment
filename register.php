@@ -20,7 +20,7 @@ if(isset($_POST['signUp'])){
         // Execute the query
         $stmt->execute();
 
-        header("location: index.php"); // Redirect to index.php after successful signup
+        header("Location: index.php"); // Redirect to index.php after successful signup
         exit();
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
