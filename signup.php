@@ -8,14 +8,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profession = $_POST['profession'];
 
     // Database connection settings
-    $servername = "172.31.30.143";
+    $servername = "172.31.22.24";
     $username = "admin"; // Replace with your database username
     $password = "aarsh123"; // Replace with your database password
     $dbname = "cca"; // Replace with your database name
 
     try {
         // Create database connection
-        $conn = new PDO("database2.c94wcsksm5ln.eu-north-1.rds.amazonaws.com", $username, $password);
+        $conn = new PDO("database-1.c94wcsksm5ln.eu-north-1.rds.amazonaws.com", $username, $password);
         // Set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
