@@ -1,5 +1,4 @@
-
-<!-- index.php -->
+!-- index.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +42,7 @@
         <i class="fab fa-google"></i>
         <i class="fab fa-facebook"></i>
       </div>
-      <div class="links">
+        <div class="links">
         <p>Already Have Account ?</p>
         <button id="signInButton">Sign In</button>
       </div>
@@ -66,7 +65,7 @@
             <a href="#">Recover Password</a>
           </p>
          <input type="submit" class="btn" value="Sign In" name="signIn">
-        </form>
+            </form>
         <p class="or">
           ----------or--------
         </p>
@@ -79,6 +78,6 @@
           <button id="signUpButton">Sign Up</button>
         </div>
       </div>
-      <script src="js/script_php.js"></script>
+      <script src="script_php.js"></script>
 </body>
 </html>
