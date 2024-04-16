@@ -79,6 +79,6 @@
           <button id="signUpButton">Sign Up</button>
         </div>
       </div>
-      <script src="script.js"></script>
+      <script src="js/script.js"></script>
 </body>
 </html>
