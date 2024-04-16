@@ -8,7 +8,7 @@
 <body>
   <div class="container">
     <h1>Sign Up</h1>
-    <form id="signupForm" action="signup.php" method="post">
+    <form id="signupForm" action="connection.php" method="post">
       <div class="form-group">
         <label for="email">E-mail</label>
         <input type="text" id="mail" name="mail" required>
