@@ -30,7 +30,7 @@
         <button type="submit" name="login">Sign Up</button>
       </div>
     </form>
-    
+    <script src="/js/script.js>
   </div>
 </body>
 </html>
