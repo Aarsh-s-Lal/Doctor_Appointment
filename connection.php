@@ -1,4 +1,8 @@
 <?php
+$mail= $_POST["mail"];
+$pass= $_POST["pass"];
+$name= $_POST["name"];
+$profess
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "";
     $username = "admin";
