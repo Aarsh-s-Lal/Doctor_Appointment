@@ -78,6 +78,6 @@
           <button id="signUpButton">Sign Up</button>
         </div>
       </div>
-      <script src="script_php.js"></script>
+      <script src="/js/script_php.js"></script>
 </body>
 </html>
