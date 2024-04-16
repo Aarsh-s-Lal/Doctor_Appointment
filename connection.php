@@ -1,43 +1,40 @@
 <?php
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
-    $email = $_POST['mail'];
-    $password = $_POST['pass'];
-    $name = $_POST['name'];
-    $profession = $_POST['profession'];
+    $servername = "";
+    $username = "admin";
+    $password = "aarsh@123";
+    $database = "cca";
 
-    // Database connection settings
-    $servername = "mydb.c94wcsksm5ln.eu-north-1.rds.amazonaws.com";
-    $username = "admin"; // Replace with your database username
-    $db_password = "aarsh123"; // Replace with your database password
-    $dbname = "cca"; // Replace with your database name
+    $conn = new mysqli($servername, $username, $password, $database);
 
-    try {
-        // Create database connection
-        $conn = new PDO("mydb.c94wcsksm5ln.eu-north-1.rds.amazonaws.com", $username, $db_password);
-        // Set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Prepare SQL statement to insert data
-        $stmt = $conn->prepare("INSERT INTO users (email, password, name, profession) VALUES (:email, :password, :name, :profession)");
-
-        // Bind parameters
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':profession', $profession);
-
-        // Execute the query
-        $stmt->execute();
-
-        echo "New record created successfully";
-    } catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
-    // Close the database connection
-    $conn = null;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $email = $_POST['mail']; // Corrected to 'mail'
+        $password = $_POST['pass']; // Corrected to 'pass'
+        $name = $_POST['name'];
+        $profession = $_POST['profession'];
+
+        $sql = "INSERT INTO users (email, password, name, profession) VALUES (?, ?, ?, ?)";
+
+        $stmt = $conn->prepare($sql);
+
+        // Bind parameters
+        $stmt->bind_param("ssss", $email, $password, $name, $profession); 
+
+        if ($stmt->execute()) {
+            header("Location: services.html");
+            exit();
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        $stmt->close();
+    }
+    $conn->close();
 }
 ?>
+
 
