@@ -1,5 +1,6 @@
 <!-- register.php -->
 <?php
+
 include 'connect.php';
 
 if(isset($_POST['signUp'])){
@@ -9,7 +10,7 @@ if(isset($_POST['signUp'])){
     $password = md5($_POST['password']); // You should consider using a more secure hashing algorithm
 
     try {
-        // Prepare SQL statement to insert data without specifying the 'id' column
+        // Prepare SQL statement to insert data
         $stmt = $conn->prepare("INSERT INTO users (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)");
         // Bind parameters
         $stmt->bindParam(':firstName', $firstName);
@@ -18,14 +19,13 @@ if(isset($_POST['signUp'])){
         $stmt->bindParam(':password', $password);
         // Execute the query
         $stmt->execute();
-        
+
         header("location: index.php"); // Redirect to index.php after successful signup
         exit();
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
 }
-
 
 
 if(isset($_POST['signIn'])){
@@ -40,13 +40,13 @@ if(isset($_POST['signIn'])){
         $stmt->bindParam(':password', $password);
         // Execute the query
         $stmt->execute();
-        
+
         // Check if user exists
         if($stmt->rowCount() > 0){
              session_start();
-             $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
              $_SESSION['email'] = $row['email'];
-             header("Location: services.html"); // Redirect to index.php after successful login
+             header("Location: index.html"); // Redirect to index.php after successful login
              exit();
         } else {
              echo "Not Found, Incorrect Email or Password";
@@ -57,3 +57,5 @@ if(isset($_POST['signIn'])){
  }
  
 ?>
+
+
