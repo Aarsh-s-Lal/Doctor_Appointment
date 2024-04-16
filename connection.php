@@ -1,12 +1,17 @@
+<!-- connect.php -->
 <?php
-$host = 'mydb.c94wcsksm5ln.eu-north-1.rds.amazonaws.com';
-$username = 'admin';
-$password = 'aarsh123';
-$database = 'cca';
 
-$conn = new mysqli($host, $username, $password, $database);
+$host = "mydb.c94wcsksm5ln.eu-north-1.rds.amazonaws.com"; // RDS endpoint
+$username = "admin"; // Replace with your database username
+$password = "aarsh123"; // Replace with your database password
+$dbname = "cca"; // Replace with your database name
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // Set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
 ?>
